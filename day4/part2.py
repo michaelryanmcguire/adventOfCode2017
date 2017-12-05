@@ -4,11 +4,4 @@ try:
 except:
    f = open("day4/input.txt")
 lines = f.read().split('\n')
-valid=0
-for line in lines:
-   words = line.split()
-   sorted_words = [''.join(sorted(word)) for word in words]
-   c = Counter(sorted_words).most_common(1)
-   if(c[0][1]==1):
-      valid+=1
-print(valid)
+print(len([1 for line in lines if Counter([''.join(sorted(word)) for word in line.split()]).most_common(1)[0][1]==1]))
